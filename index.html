@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       input {
+        outline: none;
+       }
+    </style>
+</head>
+<body>
+    <h1 for="">Chọn ảnh</h1>
+    <br>
+    <input type="file" name="" id="openfile" accept='image/*'>
+    <br>
+    <h2>Out put</h2>
+    <br>
+    <input type="text" name="" id="inputtext" readonly="true">
+    <button id="btncopy">Copy</button>
+
+
+    <script>
+        const inputfile = document.getElementById('openfile')
+        inputfile.onchange = (e)=>{
+            var files = e.target.files
+            var file = files[0]
+
+            var reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.addEventListener('load',evt=>{
+                const inputtext = document.getElementById('inputtext')
+                inputtext.value = evt.target.result
+            })
+        }
+
+        const buttoncopy = document.getElementById('btncopy')
+        buttoncopy.onclick = ()=>{
+            const inputtext = document.getElementById('inputtext')
+            if(inputtext.value != ""){
+                navigator.clipboard.writeText(inputtext.value)
+                alert('Copy thành công')
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
