@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document 1</title>
     <style>
-       input {
-        outline: none;
-       }
+        input {
+            outline: none;
+        }
     </style>
 </head>
+
 <body>
     <h1 for="">Chọn ảnh</h1>
     <br>
-    <input type="file" name="" id="openfile" >
+    <input type="file" name="" id="openfile">
     <br>
     <h2>Out put</h2>
     <br>
@@ -24,22 +26,22 @@
 
     <script>
         const inputfile = document.getElementById('openfile')
-        inputfile.onchange = (e)=>{
+        inputfile.onchange = (e) => {
             var files = e.target.files
             var file = files[0]
 
             var reader = new FileReader()
             reader.readAsDataURL(file)
-            reader.addEventListener('load',evt=>{
+            reader.addEventListener('load', evt => {
                 const inputtext = document.getElementById('inputtext')
                 inputtext.value = evt.target.result
             })
         }
 
         const buttoncopy = document.getElementById('btncopy')
-        buttoncopy.onclick = ()=>{
+        buttoncopy.onclick = () => {
             const inputtext = document.getElementById('inputtext')
-            if(inputtext.value != ""){
+            if (inputtext.value != "") {
                 navigator.clipboard.writeText(inputtext.value)
                 alert('Copy thành công')
             }
@@ -49,4 +51,5 @@
 
     </script>
 </body>
+
 </html>
